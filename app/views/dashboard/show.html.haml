@@ -1,7 +1,7 @@
 %h1 Dashboard#show
 %p Find me in app/views/dashboard/show.html.haml
 
-= form_tag message_create_path, method: :post do
-  = label_tag 'text', 'Text'
-  = text_field_tag 'text'
-  = submit_tag 'Save', class: 'btn btn-large btn-primary'
+= form_for Message.new, url: message_create_path, method: :post do |f|
+  = f.label 'text', 'Text'
+  = f.text_field 'text'
+  = f.submit 'Save', class: 'btn btn-large btn-primary'

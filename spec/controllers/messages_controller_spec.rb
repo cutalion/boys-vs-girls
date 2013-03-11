@@ -3,17 +3,17 @@ include Devise::TestHelpers
 
 describe MessagesController do
 
-  def signin
-    user = User.new({email: 'email@email.com', password: 'password'}); 
-    sign_in user
+    before(:each) do
+      @user = User.new({email: 'email@email.com', password: 'password'});
+      @valid_message = {text: 'Message text', user_id: @user.id}
+      @invalid_message = {text: '', user_id: @user.id}
+    end
+
+  def signin 
+    sign_in @user
   end
 
   describe "POST 'create'" do
-
-    before(:each) do
-      @valid_message = {text: 'Message text', user_id: current_user.id}
-      @invalid_message = {text: '', user_id: current_user.id}
-    end
 
     it 'user should be logged in' do
       post :create, {:message => @valid_message}
