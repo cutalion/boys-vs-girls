@@ -1,13 +1,14 @@
 require 'spec_helper'
-include Devise::TestHelpers
+
 
 describe MessagesController do
+  include Devise::TestHelpers
 
-    before(:each) do
-      @user = User.new({email: 'email@email.com', password: 'password'});
-      @valid_message = {text: 'Message text', user_id: @user.id}
-      @invalid_message = {text: '', user_id: @user.id}
-    end
+  before(:each) do
+    @user = User.create({email: 'email@email.com', password: 'password'});
+    @valid_message = {text: 'Message text', user_id: @user.id}
+    @invalid_message = {text: '', user_id: @user.id}
+  end
 
   def signin 
     sign_in @user
@@ -47,7 +48,7 @@ describe MessagesController do
         signin
         post :create, {:message => @invalid_message}
         flash[:alert].should_not be_nil
-        expect(response).to render_template 'dashboard/show'
+        expect(response).to redirect_to root_path
       end
     end
   end

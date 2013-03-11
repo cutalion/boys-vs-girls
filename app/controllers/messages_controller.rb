@@ -7,7 +7,8 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to root_path, :notice => 'Message was successfully created'
     else
-      render :action => 'dashboard/show'
+      flash[:alert] = 'Error'
+      redirect_to root_path
     end
   end
 end
