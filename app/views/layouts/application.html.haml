@@ -21,7 +21,7 @@
     .navbar.navbar-static-top
       .navbar-inner
         .container
-          %a.brand= link_to "Boys and Girls", root_path
+          = link_to "Boys and Girls", root_path, class: 'brand'
           .container.nav-collapse
             %ul.nav.pull-right
               - unless user_signed_in?
