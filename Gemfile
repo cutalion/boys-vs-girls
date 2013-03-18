@@ -5,7 +5,9 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'mysql2', group: :development
+gem 'pg', group: :production
+
 gem 'haml-rails'
 gem "twitter-bootstrap-rails"
 gem 'devise'
