@@ -1,7 +1,10 @@
-%h1 Dashboard#show
-%p Find me in app/views/dashboard/show.html.haml
-
+%h1 Boys vs Girls
 = form_for Message.new, url: message_create_path, method: :post do |f|
   = f.label 'text', 'Text'
   = f.text_field 'text'
   = f.submit 'Save', class: 'btn btn-large btn-primary'
+
+- @messages.each do |message|
+  %p
+    = gravatar_for message.user
+    = message.text
