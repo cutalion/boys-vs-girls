@@ -5,7 +5,10 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
     @message.user_id = current_user.id
     if @message.save
-      redirect_to root_path, :notice => 'Message was successfully created'
+      respond_to do |format|
+        format.html {redirect_to root_path}
+        format.js
+      end
     else
       flash[:alert] = 'Error'
       redirect_to root_path
