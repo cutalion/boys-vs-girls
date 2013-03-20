@@ -8,6 +8,9 @@ class MessagesController < ApplicationController
       respond_to do |format|
         format.html {redirect_to root_path}
         format.js
+        format.json {render json: @message,
+status: :created, location: @message}
+
       end
     else
       flash[:alert] = 'Error'

@@ -1,5 +1,5 @@
 %h1 Boys vs Girls
-= form_for Message.new, url: message_create_path, method: :post do |f|
+= form_for Message.new, url: message_create_path, method: :post, remote: true do |f|
   = f.label 'text', 'Text'
   = f.text_field 'text'
   = f.submit 'Save', class: 'btn btn-large btn-primary'
